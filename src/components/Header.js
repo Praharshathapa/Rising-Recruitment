@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import office from "../images/office.png";
+// components/Header.js or components/Header.tsx
+import React, { useState } from 'react';
+import { MenuIcon, XIcon } from '@heroicons/react/outline';
+import { Link } from 'react-router-dom';
+import office from '../images/office.png';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,28 +24,30 @@ const Header = () => {
 
         <div className="flex items-center space-x-4">
           <nav className="hidden md:flex space-x-4">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="hover:text-blue-500 transition-colors duration-200"
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/services"
               className="hover:text-blue-500 transition-colors duration-200"
             >
               Services
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/about"
               className="hover:text-blue-500 transition-colors duration-200"
             >
               About Us
-            </a>
+            </Link>
           </nav>
-          <button className="hidden md:block bg-[#3e4a9a] text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition ease-in-out duration-200">
-            Contact Us
-          </button>
+          <Link to="/contact">
+            <button className="hidden md:block bg-[#3e4a9a] text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition ease-in-out duration-200">
+              Contact Us
+            </button>
+          </Link>
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
@@ -59,31 +63,35 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Dropdown menu for mobile */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-md mt-2">
           <nav className="flex flex-col items-start p-4 space-y-2">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="hover:text-blue-500 transition-colors duration-200"
+              onClick={toggleMenu}
             >
               Home
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/services"
               className="hover:text-blue-500 transition-colors duration-200"
+              onClick={toggleMenu}
             >
               Services
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              to="/about"
               className="hover:text-blue-500 transition-colors duration-200"
+              onClick={toggleMenu}
             >
               About Us
-            </a>
-            <button className="bg-[#3e4a9a] text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition ease-in-out duration-200">
-              Contact Us
-            </button>
+            </Link>
+            <Link to="/contact">
+              <button className="bg-[#3e4a9a] text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition ease-in-out duration-200">
+                Contact Us
+              </button>
+            </Link>
           </nav>
         </div>
       )}
