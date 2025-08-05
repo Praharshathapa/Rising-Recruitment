@@ -11,22 +11,24 @@ import Contact from "./components/contact";
 
 function App() {
   return (
-    <>
+    <div className="min-h-screen bg-white">
       <Header />
-      <Routes>
-        <Route path="/" element={
-          <>
-            <Hero />
-            <RecruitingCountries />
-            <MessagesSlider /> 
-          </>
-        } />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <main className="pt-16"> {/* Add padding-top to account for fixed header */}
+        <Routes>
+          <Route path="/" element={
+            <>
+              <Hero />
+              <RecruitingCountries />
+              <MessagesSlider /> 
+            </>
+          } />
+          <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

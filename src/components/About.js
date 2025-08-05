@@ -1,48 +1,233 @@
-import React from 'react';
-// import teamPhoto from '../assets/team.jpg';
-// import officePhoto from '../assets/office.jpg';
-// import networkPhoto from '../assets/network.jpg';
-import { motion } from 'framer-motion';
-
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import { 
+  AiOutlineTeam, 
+  AiOutlineTrophy, 
+  AiOutlineGlobal, 
+  AiOutlineHeart,
+  AiOutlineCheckCircle 
+} from 'react-icons/ai';
 
 const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  const aboutSections = [
+    {
+      icon: <AiOutlineTeam className="text-4xl" />,
+      title: "Our Mission",
+      description: "Rising Recruitment is an integrated human resources company, incorporated under the Ministry of Labour, Government of Nepal approved license no. 878/067/68. We are the outreach vehicle of Nepalese people aspiring to work in foreign countries, namely the Gulf, South East Asia, East Asia, Europe, and other countries.",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: <AiOutlineTrophy className="text-4xl" />,
+      title: "Our Expertise",
+      description: "Our company is centrally located in the heart of the capital city of Kathmandu. We are headed by a team of highly qualified professionals with many years of experience in various aspects of human resources. Our main strategy is to understand the customers' needs and provide the best solutions.",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      icon: <AiOutlineGlobal className="text-4xl" />,
+      title: "Global Network",
+      description: "Our wide network of recruiting centers that is spread over remote areas of Nepal has provided us access to a huge number of skilled and unskilled workforce. We further coach the approved candidates to enhance their work knowledge based on the countries they will be working in.",
+      color: "from-purple-500 to-purple-600"
+    },
+    {
+      icon: <AiOutlineHeart className="text-4xl" />,
+      title: "Our Values",
+      description: "Our core values are based on integrity and transparency, thus providing the clients and job seekers a reliable platform to conduct business. Choosing Rising Recruitment as your recruitment partner in Nepal will no doubt be a profitable and a lasting business relationship.",
+      color: "from-red-500 to-red-600"
+    }
+  ];
+
+  const stats = [
+    { number: "10+", label: "Years of Experience" },
+    { number: "100+", label: "Satisfied Clients" },
+    { number: "50+", label: "Countries Served" },
+    { number: "1000+", label: "Successful Placements" }
+  ];
+
+  const values = [
+    "Integrity & Transparency",
+    "Professional Excellence",
+    "Client Satisfaction",
+    "Global Standards",
+    "Continuous Improvement",
+    "Ethical Practices"
+  ];
+
   return (
     <motion.div 
-  initial={{ opacity: 0 }} 
-  animate={{ opacity: 1 }} 
-  transition={{ duration: 0.8, ease: 'easeInOut', delay: 0.2 }} 
-  className="flex flex-col items-center">
-    <div className="min-h-screen flex flex-col items-center bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold mb-8">About Us</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
-        <div className="flex flex-col items-center">
-          {/* <img src={teamPhoto} alt="Our Team" className="rounded-lg shadow-lg mb-4" /> */}
-          <p className="text-lg text-center">
-            Rising Recruitment is an integrated human resources company, incorporated under the Ministry of Labour, Government of Nepal approved license no. 878/067/68. We are the outreach vehicle of Nepalese people aspiring to work in foreign countries, namely the Gulf, South East Asia, East Asia, Europe, and other countries.
+      ref={ref}
+      variants={containerVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-20"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <motion.div variants={itemVariants} className="text-center mb-16">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 gradient-text">
+            About Us
+          </h1>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Building bridges between talent and opportunity across the globe
           </p>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div 
+          variants={itemVariants}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
+        >
+          {stats.map((stat, index) => (
+            <motion.div
+              key={index}
+              className="text-center p-6 bg-white rounded-2xl shadow-lg card-hover"
+              whileHover={{ y: -5 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">
+                {stat.number}
+              </div>
+              <div className="text-gray-600 font-medium">
+                {stat.label}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+          {/* About Sections */}
+          <motion.div variants={itemVariants} className="space-y-8">
+            {aboutSections.map((section, index) => (
+              <motion.div
+                key={index}
+                variants={cardVariants}
+                className="bg-white rounded-2xl p-8 shadow-lg card-hover"
+                whileHover={{ y: -5 }}
+              >
+                <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${section.color} flex items-center justify-center text-white mb-6`}>
+                  {section.icon}
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800">
+                  {section.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {section.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Values Section */}
+          <motion.div variants={itemVariants} className="space-y-8">
+            <motion.div 
+              variants={cardVariants}
+              className="bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl p-8 text-white"
+            >
+              <h3 className="text-3xl font-bold mb-6">Our Core Values</h3>
+              <div className="space-y-4">
+                {values.map((value, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex items-center space-x-3"
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    <AiOutlineCheckCircle className="text-2xl text-green-300 flex-shrink-0" />
+                    <span className="text-lg">{value}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* License Info */}
+            <motion.div 
+              variants={cardVariants}
+              className="bg-white rounded-2xl p-8 shadow-lg"
+            >
+              <h3 className="text-2xl font-bold mb-4 text-gray-800">Government Approved</h3>
+              <div className="space-y-4">
+                <div className="flex items-center space-x-3 p-4 bg-blue-50 rounded-lg">
+                  <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white font-bold">
+                    ✓
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-800">Ministry of Labour Approved</div>
+                    <div className="text-sm text-gray-600">License No. 878/067/68</div>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 p-4 bg-green-50 rounded-lg">
+                  <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center text-white font-bold">
+                    ✓
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-800">Certified Recruitment Agency</div>
+                    <div className="text-sm text-gray-600">Government of Nepal</div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-        <div className="flex flex-col items-center">
-          {/* <img src={officePhoto} alt="Our Office" className="rounded-lg shadow-lg mb-4" /> */}
-          <p className="text-lg text-center">
-            Our company is centrally located in the heart of the capital city of Kathmandu. We are headed by a team of highly qualified professionals with many years of experience in various aspects of human resources. Our main strategy is to understand the customers' needs and provide the best solutions that serve the need of candidates as well as meet the requirement of the clients.
-          </p>
-        </div>
-        <div className="flex flex-col items-center">
-          {/* <img src={networkPhoto} alt="Our Network" className="rounded-lg shadow-lg mb-4" /> */}
-          <p className="text-lg text-center">
-            Our wide network of recruiting centers that is spread over remote areas of Nepal has provided us access to a huge number of skilled and unskilled workforce. We further coach the approved candidates to enhance their work knowledge based on the countries they will be working in. Additionally, we also have access to professionals who are seeking to work abroad.
-          </p>
-        </div>
-        <div className="flex flex-col items-center">
-          {/* <img src={teamPhoto} alt="Integrity and Transparency" className="rounded-lg shadow-lg mb-4" /> */}
-          <p className="text-lg text-center">
-            Our core values are based on integrity and transparency, thus providing the clients and job seekers a reliable platform to conduct business. Choosing Rising Recruitment as your recruitment partner in Nepal will no doubt be a profitable and a lasting business relationship.
-          </p>
-        </div>
+
+        {/* Call to Action */}
+        <motion.div 
+          variants={itemVariants}
+          className="text-center"
+        >
+          <motion.div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl p-12 text-white">
+            <h3 className="text-3xl font-bold mb-4">
+              Ready to Partner With Us?
+            </h3>
+            <p className="text-xl mb-8 opacity-90">
+              Let's build a successful future together
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors duration-300"
+            >
+              Get Started Today
+            </motion.button>
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
     </motion.div>
   );
-}
+};
 
 export default About;
