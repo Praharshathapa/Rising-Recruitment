@@ -42,7 +42,7 @@ const Footer = () => {
       </div>
 
       <div className="mt-4 text-center">
-        <p>&copy; 2024 Rising Recruitment. All rights reserved.</p>
+        <p>&copy; 2025 Rising Recruitment. All rights reserved.</p>
       </div>
     </footer>
   );
