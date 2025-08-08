@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Messages } from "../data";
+import { Messages, chairmanMessage } from "../data";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { AiOutlineMessage, AiOutlineStar } from "react-icons/ai";
+import { AiOutlineMessage, AiOutlineStar, AiOutlineUser } from "react-icons/ai";
+import { BsQuote } from "react-icons/bs";
 
 const MessageSlider = () => {
   const ref = useRef(null);
@@ -69,6 +70,55 @@ const MessageSlider = () => {
       className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Chairman's Message Section */}
+        <motion.div variants={itemVariants} className="mb-20">
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-8 text-white">
+              <div className="flex items-center justify-center mb-6">
+                <AiOutlineUser className="text-6xl mr-4" />
+                <div className="text-center">
+                  <h2 className="text-4xl font-bold mb-2">Chairman's Message</h2>
+                  <p className="text-xl opacity-90">{chairmanMessage.name}</p>
+                  <p className="text-lg opacity-80">{chairmanMessage.position}</p>
+                  <p className="text-lg opacity-80">{chairmanMessage.company}</p>
+                </div>
+              </div>
+            </div>
+            <div className="p-8">
+              <div className="space-y-6">
+                {chairmanMessage.message.map((paragraph, index) => (
+                  <motion.p
+                    key={index}
+                    className="text-gray-700 leading-relaxed text-lg"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                  >
+                    {paragraph}
+                  </motion.p>
+                ))}
+              </div>
+              <div className="mt-8 pt-6 border-t border-gray-200">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                      <BsQuote className="text-2xl text-white" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-gray-800">{chairmanMessage.name}</p>
+                      <p className="text-gray-600">{chairmanMessage.position}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <p className="text-sm text-gray-500">Managing Director</p>
+                    <p className="font-semibold text-gray-800">Rising Recruitment Pvt. Ltd.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Header */}
         <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 gradient-text">
@@ -179,7 +229,7 @@ const MessageSlider = () => {
             { number: "98%", label: "Client Satisfaction" },
             { number: "500+", label: "Successful Placements" },
             { number: "50+", label: "Partner Companies" },
-            { number: "10+", label: "Years Experience" }
+            { number: "12+", label: "Years Experience" }
           ].map((stat, index) => (
             <motion.div
               key={index}
