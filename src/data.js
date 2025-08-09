@@ -6,23 +6,22 @@
   IMAGES FOR Country
     -------------  */
 
-import USA from "./images/usa.jpg";
+import SAImage from "./images/usa.jpg"; // placeholder
 import Kuwait from "./images/kuwait.jpeg";
 import Dubai from "./images/dubai.jpg";
+import Malaysia from "./images/office.png"; // placeholder
+import Qatar from "./images/hero.png"; // placeholder
+import Oman from "./images/logo.jpg"; // placeholder
+import Japan from "./images/office.png"; // placeholder
 
 const countries = [
-  {
-    name: "USA",
-    image: USA,
-  },
-  {
-    name: "Kuwait",
-    image: Kuwait,
-  },
-  {
-    name: "Dubai",
-    image: Dubai,
-  },
+  { name: "Saudi Arabia", image: SAImage },
+  { name: "Malaysia", image: Malaysia },
+  { name: "Kuwait", image: Kuwait },
+  { name: "Dubai", image: Dubai },
+  { name: "Qatar", image: Qatar },
+  { name: "Oman", image: Oman },
+  { name: "Japan", image: Japan },
 ];
 
 export default countries;

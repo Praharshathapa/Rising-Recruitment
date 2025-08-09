@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from 'framer-motion';
 import hero from "../images/hero.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -181,6 +182,7 @@ const Hero = () => {
           variants={itemVariants}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
+          <Link to="/application-form">
           <motion.button 
             whileHover={{ 
               scale: 1.05,
@@ -191,7 +193,9 @@ const Hero = () => {
           >
             Get Started Today
           </motion.button>
+          </Link>
           
+          <Link to="/company-profile">
           <motion.button 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -199,6 +203,7 @@ const Hero = () => {
           >
             Learn More
           </motion.button>
+          </Link>
         </motion.div>
 
         {/* Scroll Indicator */}

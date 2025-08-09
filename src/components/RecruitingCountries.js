@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import countries from "../data";
+import { Link } from "react-router-dom";
 
 const RecruitingCountries = () => {
   const ref = useRef(null);
@@ -36,10 +37,10 @@ const RecruitingCountries = () => {
   };
 
   const countryInfo = {
-    "USA": {
-      description: "Land of opportunities with diverse career paths and competitive salaries",
-      opportunities: ["Technology", "Healthcare", "Finance", "Education"],
-      color: "from-blue-500 to-blue-600"
+    "Saudi Arabia": {
+      description: "Robust economy with world‑class projects and tax‑free income",
+      opportunities: ["Oil & Gas", "Construction", "Healthcare", "Logistics"],
+      color: "from-yellow-500 to-amber-600"
     },
     "Kuwait": {
       description: "Growing economy with excellent benefits and tax-free income",
@@ -50,6 +51,26 @@ const RecruitingCountries = () => {
       description: "Modern city with world-class infrastructure and international exposure",
       opportunities: ["Tourism", "Real Estate", "Finance", "Technology"],
       color: "from-purple-500 to-purple-600"
+    },
+    "Malaysia": {
+      description: "Diversified industry base with strong manufacturing and services",
+      opportunities: ["Manufacturing", "Hospitality", "IT", "Healthcare"],
+      color: "from-blue-500 to-cyan-600"
+    },
+    "Qatar": {
+      description: "High‑growth market with mega infrastructure and energy projects",
+      opportunities: ["Construction", "Oil & Gas", "Facility Management", "Security"],
+      color: "from-red-500 to-rose-600"
+    },
+    "Oman": {
+      description: "Stable market with strong demand in services and infrastructure",
+      opportunities: ["Hospitality", "Construction", "Retail", "Healthcare"],
+      color: "from-emerald-500 to-teal-600"
+    },
+    "Japan": {
+      description: "Advanced economy seeking skilled workers across sectors",
+      opportunities: ["Caregiving", "Manufacturing", "IT", "Engineering"],
+      color: "from-slate-600 to-blue-700"
     }
   };
 
@@ -185,6 +206,7 @@ const RecruitingCountries = () => {
                   </div>
 
                   {/* CTA Button */}
+                  <Link to="/application-form">
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -192,6 +214,7 @@ const RecruitingCountries = () => {
                   >
                     Explore Opportunities
                   </motion.button>
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -211,6 +234,7 @@ const RecruitingCountries = () => {
               Let us help you find the perfect international opportunity
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/services">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -218,6 +242,8 @@ const RecruitingCountries = () => {
               >
                 Browse Opportunities
               </motion.button>
+              </Link>
+              <Link to="/contact">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -225,6 +251,7 @@ const RecruitingCountries = () => {
               >
                 Contact Us
               </motion.button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

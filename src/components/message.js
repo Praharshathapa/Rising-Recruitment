@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Messages, chairmanMessage } from "../data";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -262,6 +263,7 @@ const MessageSlider = () => {
               Let us help you achieve your career goals or find the perfect talent for your organization
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/application-form">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -269,6 +271,8 @@ const MessageSlider = () => {
               >
                 Start Your Journey
               </motion.button>
+              </Link>
+              <Link to="/company-profile">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -276,6 +280,7 @@ const MessageSlider = () => {
               >
                 View More Testimonials
               </motion.button>
+              </Link>
             </div>
           </motion.div>
         </motion.div>

@@ -524,6 +524,7 @@ const Services = () => {
           transition={{ duration: 0.6, delay: 1.0 }}
           className="text-center"
         >
+          <a href="/application-form">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -531,6 +532,7 @@ const Services = () => {
           >
             Explore Our Services
           </motion.button>
+          </a>
         </motion.div>
       </div>
     </section>
