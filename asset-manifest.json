@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Rising-Recruitment/static/css/main.ef095adc.css",
-    "main.js": "/Rising-Recruitment/static/js/main.c550a323.js",
+    "main.css": "/Rising-Recruitment/static/css/main.d67f8deb.css",
+    "main.js": "/Rising-Recruitment/static/js/main.60981891.js",
     "static/media/logo.jpg": "/Rising-Recruitment/static/media/logo.1a39f4e7061848be323f.jpg",
     "static/media/hero.png": "/Rising-Recruitment/static/media/hero.ce81b5f360f502c89b8e.png",
     "static/media/dubai.jpg": "/Rising-Recruitment/static/media/dubai.ea01e77d41abfa06d188.jpg",
@@ -9,11 +9,11 @@
     "static/media/office.png": "/Rising-Recruitment/static/media/office.f014e1c96da6c4090af5.png",
     "static/media/usa.jpg": "/Rising-Recruitment/static/media/usa.05d5949e28846c021c70.jpg",
     "index.html": "/Rising-Recruitment/index.html",
-    "main.ef095adc.css.map": "/Rising-Recruitment/static/css/main.ef095adc.css.map",
-    "main.c550a323.js.map": "/Rising-Recruitment/static/js/main.c550a323.js.map"
+    "main.d67f8deb.css.map": "/Rising-Recruitment/static/css/main.d67f8deb.css.map",
+    "main.60981891.js.map": "/Rising-Recruitment/static/js/main.60981891.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef095adc.css",
-    "static/js/main.c550a323.js"
+    "static/css/main.d67f8deb.css",
+    "static/js/main.60981891.js"
   ]
 }
